@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+.dark { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #f8fafc; color: #0f172a; }
+.dark body { background: #020617; color: #e2e8f0; }
+.glass { background: rgba(255,255,255,.72); backdrop-filter: blur(18px); border: 1px solid rgba(148,163,184,.25); }
+.dark .glass { background: rgba(15,23,42,.7); border-color: rgba(148,163,184,.16); }
+.prose-pulse h1, .prose-pulse h2 { font-weight: 800; letter-spacing: -0.04em; }
+.prose-pulse p { line-height: 1.8; color: rgb(71 85 105); }
+.dark .prose-pulse p { color: rgb(203 213 225); }
