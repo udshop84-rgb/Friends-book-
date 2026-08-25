@@ -1,0 +1,16 @@
+export type MediaKind = 'video' | 'image';
+export type MediaItem = { id: string; type: MediaKind; name: string; size: string; bytes: number; uploadedAt: string; url: string; thumb: string; ext: string };
+export type Post = { id: string; title: string; slug: string; category: string; tags: string[]; status: 'Draft' | 'Published'; author: string; minutes: number; cover: string; excerpt: string; body: string; publishedAt: string };
+
+export const mediaItems: MediaItem[] = [
+ { id: 'vid-1', type: 'video', name: 'launch-reel.webm', size: '42.8 MB', bytes: 44879052, uploadedAt: '2026-08-22', url: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm', thumb: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80', ext: 'webm' },
+ { id: 'img-1', type: 'image', name: 'editorial-cover.jpg', size: '4.1 MB', bytes: 4299161, uploadedAt: '2026-08-23', url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85', thumb: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80', ext: 'jpg' },
+ { id: 'img-2', type: 'image', name: 'creator-studio.webp', size: '2.7 MB', bytes: 2831155, uploadedAt: '2026-08-24', url: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85', thumb: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80', ext: 'webp' },
+ { id: 'vid-2', type: 'video', name: 'product-demo.mp4', size: '78.2 MB', bytes: 82000000, uploadedAt: '2026-08-25', url: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4', thumb: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80', ext: 'mp4' }
+];
+
+export const posts: Post[] = [
+ { id: 'p1', title: 'Designing media workflows that feel instant', slug: 'designing-media-workflows-that-feel-instant', category: 'Product', tags: ['UX','Media'], status: 'Published', author: 'Avery Stone', minutes: 5, cover: mediaItems[1].url, publishedAt: '2026-08-20', excerpt: 'A practical look at optimistic interfaces, upload feedback, and resilient media sharing.', body: 'MediaPulse treats feedback as infrastructure. Uploads expose speed, progress, previews, and recovery paths so creators always know what is happening.' },
+ { id: 'p2', title: 'Secure storage patterns for creator platforms', slug: 'secure-storage-patterns-for-creator-platforms', category: 'Engineering', tags: ['Security','API'], status: 'Published', author: 'Mina Patel', minutes: 7, cover: mediaItems[2].url, publishedAt: '2026-08-18', excerpt: 'Signed upload URLs, short-lived download links, and metadata-first REST APIs.', body: 'Production integrations should keep secrets server-side, validate MIME types, scan uploads, and persist immutable audit events for every destructive action.' },
+ { id: 'p3', title: 'Editorial calendar draft', slug: 'editorial-calendar-draft', category: 'Marketing', tags: ['Draft','Planning'], status: 'Draft', author: 'Jordan Lee', minutes: 3, cover: mediaItems[2].url, publishedAt: '2026-08-25', excerpt: 'Upcoming stories and campaign notes for the creator community.', body: 'Draft content can be previewed locally before publishing instantly to the public feed.' }
+];

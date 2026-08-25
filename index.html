@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta
+      name="description"
+      content="MediaPulse is a responsive media management and blogging workspace for uploads, streaming, sharing, publishing, and secure storage integrations."
+    />
+    <title>MediaPulse — Media Management & Blogging Platform</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #020617;
+        --panel: rgba(15, 23, 42, 0.78);
+        --panel-soft: rgba(30, 41, 59, 0.75);
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --line: rgba(148, 163, 184, 0.18);
+        --pulse: #7c3aed;
+        --aqua: #06b6d4;
+        --rose: #fb7185;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(124, 58, 237, 0.28), transparent 32rem),
+          radial-gradient(circle at top right, rgba(6, 182, 212, 0.22), transparent 28rem),
+          var(--bg);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        display: grid;
+        grid-template-columns: 18rem 1fr;
+        min-height: 100vh;
+      }
+
+      aside {
+        border-right: 1px solid var(--line);
+        background: rgba(2, 6, 23, 0.68);
+        padding: 1.25rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        backdrop-filter: blur(18px);
+      }
+
+      .brand,
+      .row,
+      .actions,
+      .stats {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .logo {
+        display: grid;
+        width: 3rem;
+        height: 3rem;
+        place-items: center;
+        border-radius: 1rem;
+        background: linear-gradient(135deg, var(--pulse), var(--aqua));
+        box-shadow: 0 0 42px rgba(124, 58, 237, 0.35);
+      }
+
+      nav {
+        display: grid;
+        gap: 0.5rem;
+        margin-top: 2.5rem;
+      }
+
+      nav a,
+      .btn {
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: var(--panel-soft);
+        padding: 0.8rem 1rem;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      nav a:first-child,
+      .btn.primary {
+        border-color: transparent;
+        background: linear-gradient(135deg, var(--pulse), var(--aqua));
+        color: white;
+      }
+
+      main {
+        padding: clamp(1rem, 3vw, 2.5rem);
+      }
+
+      .hero,
+      .card,
+      .dropzone {
+        border: 1px solid var(--line);
+        border-radius: 2rem;
+        background: var(--panel);
+        box-shadow: 0 24px 80px rgba(2, 6, 23, 0.38);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+        gap: 1.5rem;
+        padding: clamp(1.25rem, 3vw, 2.5rem);
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 13ch;
+        font-size: clamp(2.5rem, 7vw, 5.8rem);
+        line-height: 0.9;
+        letter-spacing: -0.08em;
+      }
+
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .stats {
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+
+      .stat {
+        min-width: 8rem;
+        border-radius: 1.25rem;
+        background: rgba(15, 23, 42, 0.8);
+        padding: 1rem;
+      }
+
+      .stat b {
+        display: block;
+        font-size: 1.7rem;
+      }
+
+      .dropzone {
+        display: grid;
+        min-height: 20rem;
+        place-items: center;
+        border-style: dashed;
+        text-align: center;
+        background-image: radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.36) 1px, transparent 0);
+        background-size: 24px 24px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .card {
+        overflow: hidden;
+      }
+
+      .thumb {
+        min-height: 10rem;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.5), rgba(6, 182, 212, 0.35));
+      }
+
+      .card-body {
+        padding: 1rem;
+      }
+
+      .pill {
+        display: inline-flex;
+        border-radius: 999px;
+        background: rgba(6, 182, 212, 0.12);
+        color: #67e8f9;
+        padding: 0.3rem 0.65rem;
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+
+      section {
+        margin-top: 1.5rem;
+      }
+
+      @media (max-width: 920px) {
+        .shell,
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        aside {
+          position: static;
+          height: auto;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <aside aria-label="MediaPulse navigation">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">✦</div>
+          <div>
+            <strong>MediaPulse</strong>
+            <p>Create · stream · publish</p>
+          </div>
+        </div>
+        <nav>
+          <a href="#media">Media Dashboard</a>
+          <a href="#blog">Blog Platform</a>
+          <a href="#api">Secure API Pattern</a>
+        </nav>
+      </aside>
+
+      <main>
+        <header class="hero">
+          <div>
+            <span class="pill">Modern full-stack reference UI</span>
+            <h1>Media management with a publishing pulse.</h1>
+            <p>
+              Upload, preview, stream, share, download, publish, and delete media
+              with responsive creator-first workflows designed for signed REST
+              storage integrations.
+            </p>
+            <div class="actions">
+              <a class="btn primary" href="#media">Open dashboard</a>
+              <a class="btn" href="#blog">Write a post</a>
+            </div>
+            <div class="stats" aria-label="Platform highlights">
+              <div class="stat"><b>100MB</b><small>video limit</small></div>
+              <div class="stat"><b>10MB</b><small>image limit</small></div>
+              <div class="stat"><b>REST</b><small>storage-ready</small></div>
+            </div>
+          </div>
+          <div class="dropzone" id="media">
+            <div>
+              <h2>Drop videos or images</h2>
+              <p>MP4, MOV, WEBM, JPG, PNG, WEBP, and SVG upload patterns.</p>
+              <button class="btn primary" type="button">Select files</button>
+            </div>
+          </div>
+        </header>
+
+        <section aria-labelledby="media-grid-title">
+          <h2 id="media-grid-title">Media Grid & Gallery</h2>
+          <div class="grid">
+            <article class="card">
+              <div class="thumb" role="img" aria-label="Video preview gradient"></div>
+              <div class="card-body">
+                <span class="pill">Video</span>
+                <h3>launch-reel.webm</h3>
+                <p>Stream, copy link, open share modal, or download original quality.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="thumb" role="img" aria-label="Image preview gradient"></div>
+              <div class="card-body">
+                <span class="pill">Image</span>
+                <h3>editorial-cover.jpg</h3>
+                <p>Preview in a lightbox, share, download, or optimistically delete.</p>
+              </div>
+            </article>
+            <article class="card" id="api">
+              <div class="card-body">
+                <span class="pill">Secure API</span>
+                <h3>Storage Integration</h3>
+                <p>
+                  Keep secrets server-side, validate files, mint short-lived signed
+                  URLs, and persist media metadata through RESTful endpoints.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="blog" aria-labelledby="blog-title">
+          <h2 id="blog-title">Blog Post Platform</h2>
+          <div class="grid">
+            <article class="card">
+              <div class="card-body">
+                <span class="pill">Editor</span>
+                <h3>Markdown publishing</h3>
+                <p>Title, slug, cover upload, embedded images, tags, categories, draft, preview, and instant publish controls.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-body">
+                <span class="pill">Feed</span>
+                <h3>Searchable articles</h3>
+                <p>Filter by query or category with author details, reading time, sharing, and PDF download actions.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-body">
+                <span class="pill">Reader</span>
+                <h3>Rich article view</h3>
+                <p>Styled typography, author bio, social bar, embedded media support, and comments placeholder.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
